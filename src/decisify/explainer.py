@@ -1,15 +1,11 @@
 """ Explainer abstract class for explainer classes """
 from abc import ABC, abstractmethod
-from magentic import prompt
 from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings
 from decisify.core import OptInputModel, OptOutputModel
 from decisify.optimizer import ModelMetaData, OptModel, GurobiModelMetaData
 from decisify.utils import answer_query, data_transformer
-from typing import TypeVar
 
-
-TOptInputModel = TypeVar("OptInputModel", bound=BaseModel)
 
 
 class LLMSettings(BaseSettings):

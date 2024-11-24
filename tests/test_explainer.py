@@ -1,27 +1,50 @@
-from abc import ABC, abstractmethod
-from pydantic import BaseModel
-from decisify.explainer import Explainer
+from abc import ABC
+from decisify.explainer import Interrogator
+import pytest
 
-class DummyModel(BaseModel):
-    data: str
+class MockInterrogator(Interrogator):
+    def answer(self, query: str):
+        return f"Answering query: {query}"
 
-class TestExplainer(Explainer):
-    def explain(self, query: str, ref_input: BaseModel):
-        return f"Explaining {query} with {ref_input}"
+    def explain(self, query: str):
+        return f"Explaining decision for query: {query}"
 
-    def interrogate(self, query: str, ref_input: BaseModel):
-        return f"Interrogating {query} with {ref_input}"
+    def what_if(self, query: str):
+        return f"Analyzing what-if scenario for query: {query}"
 
-def setup_module(module):
-    global explainer, query, ref_input
-    explainer = TestExplainer()
-    query = "test query"
-    ref_input = DummyModel(data="test data")
 
-def test_explain():
-    result = explainer.explain(query, ref_input)
-    assert result == f"Explaining {query} with {ref_input}"
+def test_mock_interrogator_instantiation():
+    """Test that a concrete subclass of Interrogator can be instantiated."""
+    interrogator = MockInterrogator()
+    assert isinstance(interrogator, Interrogator)
 
-def test_interrogate():
-    result = explainer.interrogate(query, ref_input)
-    assert result == f"Interrogating {query} with {ref_input}"
+def test_answer_method():
+    """Test the answer method of the MockInterrogator."""
+    interrogator = MockInterrogator()
+    query = "Why was the decision made?"
+    response = interrogator.answer(query)
+    assert response == f"Answering query: {query}"
+
+def test_explain_method():
+    """Test the explain method of the MockInterrogator."""
+    interrogator = MockInterrogator()
+    query = "How was the decision made?"
+    response = interrogator.explain(query)
+    assert response == f"Explaining decision for query: {query}"
+
+def test_what_if_method():
+    """Test the what-if method of the MockInterrogator."""
+    interrogator = MockInterrogator()
+    query = "What if the input was different?"
+    response = interrogator.what_if(query)
+    assert response == f"Analyzing what-if scenario for query: {query}"
+
+def test_cannot_instantiate_abstract_class():
+    """Test that the abstract Interrogator class cannot be instantiated."""
+    with pytest.raises(TypeError):
+        _ = Interrogator()
+
+
+
+
+
