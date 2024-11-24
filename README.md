@@ -30,10 +30,29 @@ Here's a simple example of how to use Decisify:
 import decisify
 
 # Your optimization model code here
+(1) Just define the Pydantic Models for (a) Input (b) Output
+(2) Concrete implementation of optimization model
+(3) A method to read, the solution
+```
 
+Now, you are read to use decisify, its simple from this point onwards
+
+
+```python
 # Generate explanations for the model's decisions
-explanations = decisify.explain(model)
-print(explanations)
+trnsprt_model = TransportationModel()
+solution = trnsprt_model.get_solution(input_data)
+print(solution.model_dump_json())
+interrogator = GurobiInterrogator(trnsprt_model, input_data)
+answer = interrogator.answer("What is the optimal solution for the transportation problem?")
+print(answer)
+answer = interrogator.answer("How many factories and how many distribution centers are there?")
+print(answer)
+#Now, lets assume the user wants to change the supply at warehouse W1 to 20
+answer = interrogator.what_if("the courier company just doubled the transportation costs, how does this affect the total cost?")
+print(answer)
+answer = interrogator.what_if("The demand at customer C1 has increased by 100 times, how does this affect the total cost?")
+print(answer)
 ```
 
 ## Contributing

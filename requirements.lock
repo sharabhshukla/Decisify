@@ -24,7 +24,10 @@ alembic==1.14.0
     # via embedchain
 annotated-types==0.7.0
     # via pydantic
+anthropic==0.30.1
+    # via modelsmith
 anyio==4.6.2.post1
+    # via anthropic
     # via httpx
     # via openai
     # via starlette
@@ -107,6 +110,7 @@ deprecated==1.2.15
 deprecation==2.1.0
     # via lancedb
 distro==1.9.0
+    # via anthropic
     # via openai
 docker==7.1.0
     # via crewai-tools
@@ -127,6 +131,8 @@ fastavro==1.9.7
     # via cohere
 filelock==3.16.1
     # via huggingface-hub
+filetype==1.2.0
+    # via magentic
 flatbuffers==24.3.25
     # via onnxruntime
 frozenlist==1.5.0
@@ -150,6 +156,7 @@ google-auth==2.36.0
     # via kubernetes
 google-cloud-aiplatform==1.73.0
     # via embedchain
+    # via modelsmith
 google-cloud-bigquery==3.27.0
     # via google-cloud-aiplatform
 google-cloud-core==2.4.1
@@ -190,6 +197,8 @@ grpcio-status==1.68.0
     # via google-api-core
 grpcio-tools==1.68.0
     # via qdrant-client
+gurobipy==12.0.0
+    # via decisify
 h11==0.14.0
     # via httpcore
     # via uvicorn
@@ -203,6 +212,7 @@ httpcore==1.0.7
 httptools==0.6.4
     # via uvicorn
 httpx==0.27.2
+    # via anthropic
     # via chromadb
     # via cohere
     # via langsmith
@@ -230,17 +240,18 @@ importlib-resources==6.4.5
     # via chromadb
 iniconfig==2.0.0
     # via pytest
-instructor==1.6.4
+instructor==1.5.2
     # via crewai
 ipython==8.29.0
     # via pyvis
 jedi==0.19.2
     # via ipython
 jinja2==3.1.4
-    # via instructor
     # via litellm
+    # via modelsmith
     # via pyvis
-jiter==0.6.1
+jiter==0.5.0
+    # via anthropic
     # via instructor
     # via openai
 json-repair==0.30.2
@@ -291,6 +302,10 @@ langsmith==0.1.145
     # via langchain-core
 litellm==1.52.14
     # via crewai
+logfire-api==2.4.1
+    # via magentic
+magentic==0.32.0
+    # via decisify
 mako==1.3.6
     # via alembic
 markdown-it-py==3.0.0
@@ -308,6 +323,8 @@ mem0ai==0.1.32
     # via embedchain
 mmh3==5.0.1
     # via chromadb
+modelsmith==0.6.1
+    # via decisify
 monotonic==1.6
     # via posthog
 mpmath==1.3.0
@@ -346,7 +363,9 @@ openai==1.55.0
     # via instructor
     # via langchain-openai
     # via litellm
+    # via magentic
     # via mem0ai
+    # via modelsmith
 opentelemetry-api==1.28.2
     # via chromadb
     # via crewai
@@ -454,6 +473,7 @@ pyasn1-modules==0.4.1
 pycparser==2.22
     # via cffi
 pydantic==2.10.1
+    # via anthropic
     # via chromadb
     # via cohere
     # via crewai
@@ -468,7 +488,9 @@ pydantic==2.10.1
     # via langchain-core
     # via langsmith
     # via litellm
+    # via magentic
     # via mem0ai
+    # via modelsmith
     # via openai
     # via pydantic-settings
     # via qdrant-client
@@ -478,6 +500,7 @@ pydantic-core==2.27.1
     # via pydantic
 pydantic-settings==2.6.1
     # via langchain-community
+    # via magentic
 pygments==2.18.0
     # via ipython
     # via rich
@@ -519,7 +542,7 @@ pytz==2024.2
     # via pandas
 pyvis==0.3.2
     # via crewai
-#pywin32==308
+pywin32==308
     # via docker
     # via portalocker
 pyyaml==6.0.2
@@ -548,7 +571,6 @@ requests==2.32.3
     # via google-cloud-storage
     # via gptcache
     # via huggingface-hub
-    # via instructor
     # via kubernetes
     # via langchain
     # via langchain-community
@@ -589,6 +611,7 @@ six==1.16.0
     # via posthog
     # via python-dateutil
 sniffio==1.3.1
+    # via anthropic
     # via anyio
     # via httpx
     # via openai
@@ -611,17 +634,19 @@ sympy==1.13.3
     # via onnxruntime
 tabulate==0.9.0
     # via langchain-cohere
-tenacity==9.0.0
+tenacity==8.5.0
     # via chromadb
     # via instructor
     # via langchain
     # via langchain-community
     # via langchain-core
+    # via modelsmith
 tiktoken==0.7.0
     # via embedchain
     # via langchain-openai
     # via litellm
 tokenizers==0.20.3
+    # via anthropic
     # via chromadb
     # via cohere
     # via litellm
@@ -649,6 +674,7 @@ types-requests==2.32.0.20241016
     # via cohere
 typing-extensions==4.12.2
     # via alembic
+    # via anthropic
     # via chromadb
     # via cohere
     # via fastapi
