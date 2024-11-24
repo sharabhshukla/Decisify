@@ -670,7 +670,7 @@ pytz==2024.2
     # via pandas
 pyvis==0.3.2
     # via crewai
-pywin32==308
+#pywin32==308
     # via docker
     # via jupyter-core
     # via portalocker
